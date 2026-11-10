@@ -1,0 +1,5 @@
+flask
+flask-socketio
+simple-websocket
+gunicorn
+psycopg2-binary

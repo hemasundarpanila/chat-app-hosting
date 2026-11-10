@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Log in</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="box">
+<h1>Log in</h1>
+<form id="f1"><label>Phone number<input id="phone" inputmode="tel" placeholder="9876543210" required></label><button>Send OTP</button></form>
+<form id="f2" hidden><p class="hint">Enter the 6-digit OTP sent to your number.</p><input id="code" inputmode="numeric" maxlength="6" required><button>Verify</button></form>
+<p class="err" id="err"></p></div>
+<script>
+const $=id=>document.getElementById(id);
+async function post(u,b){const r=await fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)});return [r.ok,await r.json()];}
+$("f1").onsubmit=async e=>{e.preventDefault();const [ok,j]=await post("/api/send-otp",{phone:$("phone").value});$("err").textContent=ok?"":j.error;if(ok){$("f1").hidden=true;$("f2").hidden=false;$("code").focus();}};
+$("f2").onsubmit=async e=>{e.preventDefault();const [ok,j]=await post("/api/verify-otp",{phone:$("phone").value,code:$("code").value});if(ok)location="/chat";else $("err").textContent=j.error;};
+</script></body></html>

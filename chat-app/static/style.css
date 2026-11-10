@@ -1,0 +1,31 @@
+:root{--bg:#f3f5fa;--card:#fff;--ink:#1b2236;--muted:#6b7490;--line:#dde2ee;--acc:#2f4bff;--accink:#fff;--theirs:#e6eaf4}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1320;--card:#171c2e;--ink:#e8ebf5;--muted:#8c95b3;--line:#283050;--acc:#5b72ff;--accink:#0b1020;--theirs:#232a44}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:system-ui,"Noto Sans Telugu",sans-serif;background:var(--bg);color:var(--ink)}
+.box{max-width:360px;margin:12vh auto;padding:24px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+input,button{font:inherit}
+input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin:6px 0}
+button{padding:10px 16px;border:0;border-radius:10px;background:var(--acc);color:var(--accink);font-weight:600;cursor:pointer}
+.err{color:#d33;min-height:1.2em;margin:4px 0;font-size:.9rem}
+.hint{color:var(--muted);font-size:.9rem}
+body.app{display:grid;grid-template-columns:300px 1fr}
+aside,main{background:var(--card);display:flex;flex-direction:column;min-height:0;height:100%}
+aside{border-right:1px solid var(--line)}
+aside header,main header{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+aside a{color:var(--muted);font-size:.85rem}
+#addForm{display:flex;gap:6px;padding:10px 12px 0}
+#addForm input{margin:0}
+#addErr{padding:0 12px}
+#chats{list-style:none;margin:0;padding:4px 8px;overflow:auto;flex:1}
+#chats button{width:100%;text-align:left;background:none;color:var(--ink);font-weight:500;padding:10px}
+#chats button.on{background:var(--theirs)}
+#msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:6px}
+.msg{max-width:75%;padding:8px 12px;border-radius:14px;overflow-wrap:anywhere}
+.msg small{display:block;font-size:.7rem;opacity:.7}
+.mine{align-self:flex-end;background:var(--acc);color:var(--accink)}
+.theirs{align-self:flex-start;background:var(--theirs)}
+#sendForm{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+#sendForm input{margin:0}
+#back{display:none;background:none;color:var(--ink);padding:4px 8px}
+@media(max-width:700px){body.app{grid-template-columns:1fr}main{display:none}body.inchat main{display:flex}body.inchat aside{display:none}#back{display:block}}

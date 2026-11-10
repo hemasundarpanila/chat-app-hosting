@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Messages</title><link rel="stylesheet" href="/static/style.css"></head>
+<body class="app" data-me="{{ me }}">
+<aside>
+  <header><strong>{{ me }}</strong><a href="/logout">Log out</a></header>
+  <form id="addForm"><input id="num" inputmode="tel" placeholder="Add a number to chat" required><button>Add</button></form>
+  <p id="addErr" class="err"></p>
+  <ul id="chats"></ul>
+</aside>
+<main>
+  <header><button id="back" type="button">Back</button><strong id="title">Select a chat</strong><span></span></header>
+  <div id="msgs"></div>
+  <form id="sendForm"><input id="txt" autocomplete="off" placeholder="Type a message"><button>Send</button></form>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<script src="/static/chat.js"></script>
+</body></html>
